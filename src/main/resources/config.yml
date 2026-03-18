@@ -1,0 +1,11 @@
+configVersion: 1 # currently not used, but may be in the future for config updates
+
+# The worlds in which combat mode is allowed and available.
+# If a player is in a world that is not listed here, they will not be able to enter combat mode.
+allowed_worlds:
+  - world
+
+# disable pvp by default for all players, which are not in combat mode
+# only applies to the worlds listed in allowed_worlds
+# other worlds use the default pvp settings of the server
+disable_pvp_by_default: true

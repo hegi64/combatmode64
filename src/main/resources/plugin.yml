@@ -1,0 +1,13 @@
+name: CombatMode64
+version: '1.0'
+main: com.hegi64.combatMode64.Main
+api-version: '1.21'
+authors: [ hegi64 ]
+website: hegi64.com
+
+commands:
+  combatmode:
+    description: enable or disable combat mode for a player
+    permission: combatmode64.combatmode
+    aliases:
+      - cm
