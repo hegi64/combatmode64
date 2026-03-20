@@ -2,6 +2,7 @@ package com.hegi64.combatMode64.commands.subcommands;
 
 import com.hegi64.combatMode64.Main;
 import com.hegi64.combatMode64.commands.SubCommand;
+import com.hegi64.combatMode64.display.CombatStatusDisplay;
 import com.hegi64.combatMode64.utils.Permissions;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -20,6 +21,8 @@ public class ReloadSubCommand implements SubCommand {
     public boolean execute(@NonNull CommandSender sender, Command command, String label, String[] args) {
         Main plugin = Main.getInstance();
         plugin.reloadConfig();
+
+        CombatStatusDisplay.refreshAllDisplays();
 
         sender.sendMessage(ChatColor.GREEN + "Configuration reloaded successfully.");
         return true;
