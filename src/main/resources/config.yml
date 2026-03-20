@@ -1,4 +1,4 @@
-configVersion: 1 # currently not used, but may be in the future for config updates
+configVersion: 1.0.1
 
 # The worlds in which combat mode is allowed and available.
 # If a player is in a world that is not listed here, they will not be able to enter combat mode.
@@ -9,3 +9,13 @@ allowed_worlds:
 # only applies to the worlds listed in allowed_worlds
 # other worlds use the default pvp settings of the server
 disable_pvp_by_default: true
+
+# allow players to switch gamemodes while in combat mode
+# if allowed, the combat mode gets disabled when switching to a non-survival gamemode
+# and must be manually re-enabled when switching back to survival
+# if disabled, the gamemode is forced to survival while in combat mode, and switching gamemodes is not possible until combat mode is disabled
+allow_gamemode_switching: true
+
+# Visual combat state indicator shown below player names.
+combat_status_indicator:
+  enabled: true

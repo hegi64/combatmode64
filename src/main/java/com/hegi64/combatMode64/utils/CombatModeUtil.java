@@ -61,6 +61,7 @@ public class CombatModeUtil {
      */
     public static void disableCombatMode(Player player, boolean notifyPlayer) {
         player.getPersistentDataContainer().set(COMBAT_MODE_KEY, PersistentDataType.BOOLEAN, false);
+
         if (notifyPlayer) {
             player.sendMessage(ChatColor.YELLOW + "Combat mode disabled.");
         }
@@ -72,13 +73,11 @@ public class CombatModeUtil {
      * @return true if combat mode is enabled for the world, false otherwise.
      */
     public static boolean isCombatModeEnabledForWorld(String worldName) {
-        Main plugin = Main.getInstance();
-        return plugin.getConfig().getStringList("allowed_worlds").contains(worldName);
+        return ConfigUtil.getAllowedWorlds().contains(worldName);
     }
 
     public static boolean isPvpDisabledByDefault() {
-        Main plugin = Main.getInstance();
-        return plugin.getConfig().getBoolean("disable_pvp_by_default", false);
+        return ConfigUtil.isPvpDisabledByDefault();
     }
 
 }

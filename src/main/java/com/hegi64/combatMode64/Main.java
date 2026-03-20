@@ -3,7 +3,7 @@ package com.hegi64.combatMode64;
 import com.hegi64.combatMode64.commands.CombatModeCommand;
 import com.hegi64.combatMode64.listeners.CombatModeStateListener;
 import com.hegi64.combatMode64.listeners.PvpListener;
-import com.sun.source.util.Plugin;
+import com.hegi64.combatMode64.utils.ConfigMigrator;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.PluginManager;
@@ -24,6 +24,7 @@ public final class Main extends JavaPlugin {
     @Override
     public void onEnable() {
         this.saveDefaultConfig();
+        ConfigMigrator.migrate();
 
         PluginManager manager = Bukkit.getPluginManager();
         registerEvents(manager);
