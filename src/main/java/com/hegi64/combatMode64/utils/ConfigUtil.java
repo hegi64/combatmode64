@@ -21,6 +21,10 @@ public final class ConfigUtil {
         return Main.getInstance().getConfig().getBoolean("allow_gamemode_switching", true);
     }
 
+    // -------------------------------------------------------------------------
+    // Combat status indicator (Team suffix)
+    // -------------------------------------------------------------------------
+
     public static boolean isCombatStatusIndicatorEnabled() {
         return Main.getInstance().getConfig().getBoolean(INDICATOR_ROOT + ".enabled", true);
     }
@@ -33,16 +37,13 @@ public final class ConfigUtil {
         return Main.getInstance().getConfig().getBoolean(INDICATOR_ROOT + ".not_in_combat.show", false);
     }
 
-    public static int getInCombatIndicatorScore() {
-        return Main.getInstance().getConfig().getInt(INDICATOR_ROOT + ".in_combat.score", 1);
+    public static String getInCombatText() {
+        String text = Main.getInstance().getConfig().getString(INDICATOR_ROOT + ".in_combat.text", " &c⚔ Combat Mode");
+        return ChatColor.translateAlternateColorCodes('&', text);
     }
 
-    public static int getNotInCombatIndicatorScore() {
-        return Main.getInstance().getConfig().getInt(INDICATOR_ROOT + ".not_in_combat.score", 0);
-    }
-
-    public static String getCombatIndicatorBelowNameTitle() {
-        String text = Main.getInstance().getConfig().getString(INDICATOR_ROOT + ".below_name_title", "&cCombat");
+    public static String getNotInCombatText() {
+        String text = Main.getInstance().getConfig().getString(INDICATOR_ROOT + ".not_in_combat.text", " &a☮ Peaceful");
         return ChatColor.translateAlternateColorCodes('&', text);
     }
 }

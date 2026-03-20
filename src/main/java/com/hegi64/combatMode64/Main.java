@@ -1,6 +1,7 @@
 package com.hegi64.combatMode64;
 
 import com.hegi64.combatMode64.commands.CombatModeCommand;
+import com.hegi64.combatMode64.display.CombatStatusDisplay;
 import com.hegi64.combatMode64.listeners.CombatModeStateListener;
 import com.hegi64.combatMode64.listeners.PvpListener;
 import com.hegi64.combatMode64.utils.ConfigMigrator;
@@ -33,6 +34,7 @@ public final class Main extends JavaPlugin {
 
     @Override
     public void onDisable() {
+        CombatStatusDisplay.removeAllDisplays();
         Bukkit.getConsoleSender().sendMessage(ChatColor.YELLOW + "CombatMode64 Plugin has been disabled.");
     }
 

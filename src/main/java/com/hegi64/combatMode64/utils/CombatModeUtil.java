@@ -1,6 +1,7 @@
 package com.hegi64.combatMode64.utils;
 
 import com.hegi64.combatMode64.Main;
+import com.hegi64.combatMode64.display.CombatStatusDisplay;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.NamespacedKey;
@@ -48,6 +49,8 @@ public class CombatModeUtil {
             player.setGameMode(GameMode.SURVIVAL);
         }
 
+        CombatStatusDisplay.updateDisplay(player);
+
         if (notifyPlayer) {
             player.sendMessage(ChatColor.GREEN + "Combat mode enabled.");
         }
@@ -61,6 +64,8 @@ public class CombatModeUtil {
      */
     public static void disableCombatMode(Player player, boolean notifyPlayer) {
         player.getPersistentDataContainer().set(COMBAT_MODE_KEY, PersistentDataType.BOOLEAN, false);
+
+        CombatStatusDisplay.updateDisplay(player);
 
         if (notifyPlayer) {
             player.sendMessage(ChatColor.YELLOW + "Combat mode disabled.");

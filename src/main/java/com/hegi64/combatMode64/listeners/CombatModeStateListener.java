@@ -1,5 +1,6 @@
 package com.hegi64.combatMode64.listeners;
 
+import com.hegi64.combatMode64.display.CombatStatusDisplay;
 import com.hegi64.combatMode64.utils.CombatModeUtil;
 import com.hegi64.combatMode64.utils.ConfigUtil;
 import org.bukkit.ChatColor;
@@ -10,6 +11,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerChangedWorldEvent;
 import org.bukkit.event.player.PlayerGameModeChangeEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 
 public class CombatModeStateListener implements Listener {
 
@@ -43,6 +45,14 @@ public class CombatModeStateListener implements Listener {
             player.sendMessage(ChatColor.YELLOW + "Combat mode disabled because you rejoined the server.");
         }
 
+        // Initialize combat status display for the joining player
+        CombatStatusDisplay.onPlayerJoin(player);
+        CombatStatusDisplay.updateDisplay(player);
+    }
+
+    @EventHandler
+    public void onPlayerQuit(PlayerQuitEvent event) {
+        CombatStatusDisplay.removeDisplay(event.getPlayer());
     }
 
     @EventHandler
