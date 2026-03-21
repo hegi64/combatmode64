@@ -1,5 +1,5 @@
 name: CombatMode64
-version: '1.1.0'
+version: '1.1.1'
 main: com.hegi64.combatMode64.Main
 api-version: '1.21'
 authors: [ hegi64 ]
@@ -11,3 +11,34 @@ commands:
     permission: combatmode64.combatmode
     aliases:
       - cm
+
+permissions:
+  combatmode64.combatmode:
+    description: Allows using the /combatmode command
+    default: true
+    children:
+      combatmode64.combatmode.reload: false
+      combatmode64.combatmode.change: true
+      combatmode64.combatmode.other.change: false
+      combatmode64.combatmode.info: true
+      combatmode64.combatmode.other.info: false
+
+  combatmode64.combatmode.reload:
+    description: Allows reloading the CombatMode64 config
+    default: op
+
+  combatmode64.combatmode.change:
+    description: Allows changing your own combat mode state
+    default: true
+
+  combatmode64.combatmode.other.change:
+    description: Allows changing another player's combat mode state
+    default: op
+
+  combatmode64.combatmode.info:
+    description: Allows viewing your own combat mode status
+    default: true
+
+  combatmode64.combatmode.other.info:
+    description: Allows viewing another player's combat mode status
+    default: op

@@ -10,6 +10,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jspecify.annotations.NonNull;
 
+import java.util.List;
+
 public class InfoSubCommand implements SubCommand {
 
     public static String name = "info";
@@ -30,7 +32,7 @@ public class InfoSubCommand implements SubCommand {
                 return false;
             }
 
-            sender.sendMessage(ChatColor.GRAY + "The Player " + ChatColor.DARK_AQUA + targetPlayer.getName() + ChatColor.GRAY + " is currently " + (CombatModeUtil.isInCombatMode(targetPlayer) ? ChatColor.GREEN + "in combat mode" : ChatColor.YELLOW + "not in combat mode"));
+            sender.sendMessage(ChatColor.GRAY + "The Player " + ChatColor.AQUA + targetPlayer.getName() + ChatColor.GRAY + " is currently " + (CombatModeUtil.isInCombatMode(targetPlayer) ? ChatColor.GREEN + "in combat mode" : ChatColor.YELLOW + "not in combat mode"));
             return true;
         }
 
@@ -46,13 +48,23 @@ public class InfoSubCommand implements SubCommand {
     @Override
     public boolean hasRequiredPermission(@NonNull CommandSender sender) {
         return sender.hasPermission(Permissions.INFO_COMMAND_PERMISSION)
-            || sender.hasPermission(Permissions.INFO_OTHER_COMMAND_PERMISSION)
-            || sender.hasPermission(Permissions.CHANGE_OWN_COMBAT_MODE_PERMISSION)
-            || sender.hasPermission(Permissions.CHANGE_OTHER_COMBAT_MODE_PERMISSION);
+            || sender.hasPermission(Permissions.INFO_OTHER_COMMAND_PERMISSION);
+    }
+
+    @Override
+    public @NonNull List<String> tabComplete(@NonNull CommandSender sender, Command command, String label, String[] args) {
+        if (!hasInfoOtherPermission(sender) || args.length != 1) {
+            return List.of();
+        }
+
+        String prefix = args[0].toLowerCase();
+        return Main.getInstance().getServer().getOnlinePlayers().stream()
+            .map(Player::getName)
+            .filter(name -> name.toLowerCase().startsWith(prefix))
+            .toList();
     }
 
     private boolean hasInfoOtherPermission(CommandSender sender) {
-        return sender.hasPermission(Permissions.INFO_OTHER_COMMAND_PERMISSION)
-            || sender.hasPermission(Permissions.CHANGE_OTHER_COMBAT_MODE_PERMISSION);
+        return sender.hasPermission(Permissions.INFO_OTHER_COMMAND_PERMISSION);
     }
 }

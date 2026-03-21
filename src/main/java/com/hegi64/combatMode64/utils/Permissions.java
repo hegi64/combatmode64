@@ -12,10 +12,6 @@ public class Permissions {
 
     public static final String CHANGE_OTHER_COMBAT_MODE_PERMISSION = COMMAND_PERMISSION + ".other.change";
 
-    public static final String TOGGLE_COMMAND_PERMISSION = COMMAND_PERMISSION + ".toggle";
-
-    public static final String TOGGLE_OTHER_COMMAND_PERMISSION = COMMAND_PERMISSION + ".other.toggle";
-
     public static final String INFO_COMMAND_PERMISSION = COMMAND_PERMISSION + ".info";
 
     public static final String INFO_OTHER_COMMAND_PERMISSION = COMMAND_PERMISSION + ".other.info";

@@ -8,6 +8,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.jspecify.annotations.NonNull;
 
+import java.util.List;
 import java.util.Map;
 
 public class HelpSubCommand implements SubCommand {
@@ -40,7 +41,10 @@ public class HelpSubCommand implements SubCommand {
             }
         }
 
-        sender.sendMessage(ChatColor.GOLD + "Usage: " + ChatColor.GREEN + "/" + Main.getInstance().getCommand("combatmode").getName() + " <subcommand>");
+        String commandName = Main.getInstance().getCommand("combatmode") != null
+            ? Main.getInstance().getCommand("combatmode").getName()
+            : "combatmode";
+        sender.sendMessage(ChatColor.GOLD + "Usage: " + ChatColor.GREEN + "/" + commandName + " <subcommand>");
     }
 
     private final Map<String, SubCommand> subCommands;
