@@ -19,7 +19,7 @@ public final class Main extends JavaPlugin {
 
         instance = this;
 
-        Bukkit.getConsoleSender().sendMessage(ChatColor.DARK_AQUA + "Loaded CombatMode64 Plugin");
+        Bukkit.getConsoleSender().sendMessage(ChatColor.AQUA + "[CombatMode64] Loaded CombatMode64 Plugin");
     }
 
     @Override

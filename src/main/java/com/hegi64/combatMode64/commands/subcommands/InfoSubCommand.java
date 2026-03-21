@@ -30,7 +30,7 @@ public class InfoSubCommand implements SubCommand {
                 return false;
             }
 
-            sender.sendMessage(ChatColor.GRAY + "The Player " + ChatColor.DARK_AQUA + targetPlayer.getName() + ChatColor.GRAY + " is currently " + (CombatModeUtil.isInCombatMode(targetPlayer) ? ChatColor.GREEN + "in combat mode" : ChatColor.YELLOW + "not in combat mode"));
+            sender.sendMessage(ChatColor.GRAY + "The Player " + ChatColor.AQUA + targetPlayer.getName() + ChatColor.GRAY + " is currently " + (CombatModeUtil.isInCombatMode(targetPlayer) ? ChatColor.GREEN + "in combat mode" : ChatColor.YELLOW + "not in combat mode"));
             return true;
         }
 
@@ -46,13 +46,10 @@ public class InfoSubCommand implements SubCommand {
     @Override
     public boolean hasRequiredPermission(@NonNull CommandSender sender) {
         return sender.hasPermission(Permissions.INFO_COMMAND_PERMISSION)
-            || sender.hasPermission(Permissions.INFO_OTHER_COMMAND_PERMISSION)
-            || sender.hasPermission(Permissions.CHANGE_OWN_COMBAT_MODE_PERMISSION)
-            || sender.hasPermission(Permissions.CHANGE_OTHER_COMBAT_MODE_PERMISSION);
+            || sender.hasPermission(Permissions.INFO_OTHER_COMMAND_PERMISSION);
     }
 
     private boolean hasInfoOtherPermission(CommandSender sender) {
-        return sender.hasPermission(Permissions.INFO_OTHER_COMMAND_PERMISSION)
-            || sender.hasPermission(Permissions.CHANGE_OTHER_COMBAT_MODE_PERMISSION);
+        return sender.hasPermission(Permissions.INFO_OTHER_COMMAND_PERMISSION);
     }
 }
