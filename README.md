@@ -1,6 +1,6 @@
 # CombatMode64
 
-CombatMode64 is a lightweight Paper plugin that lets players manually toggle a personal combat mode state. It includes simple command controls for checking status, toggling mode, and managing other players when permitted.
+CombatMode64 is a lightweight Spigot plugin that lets players manually toggle a personal combat mode state. It includes simple command controls for checking status, toggling mode, and managing other players when permitted.
 
 ## Commands and Subcommands
 
