@@ -4,14 +4,16 @@ import com.hegi64.combatMode64.commands.subcommands.*;
 import com.hegi64.combatMode64.utils.Permissions;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabExecutor;
 import org.jspecify.annotations.NonNull;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-public class CombatModeCommand implements CommandExecutor {
+public class CombatModeCommand implements TabExecutor {
     private final Map<String, SubCommand> subCommands = new HashMap<>();
 
     public CombatModeCommand() {
@@ -52,5 +54,35 @@ public class CombatModeCommand implements CommandExecutor {
         subCommands.get(ToggleSubCommand.name).execute(sender, command, label, new String[]{});
 
         return false;
+    }
+
+    @Override
+    public @NonNull List<String> onTabComplete(@NonNull CommandSender sender, @NonNull Command command, @NonNull String alias, @NonNull String[] args) {
+        if (!sender.hasPermission(Permissions.COMMAND_PERMISSION)) {
+            return List.of();
+        }
+
+        if (args.length == 1) {
+            String prefix = args[0].toLowerCase();
+            List<String> completions = new ArrayList<>();
+
+            for (SubCommand subCommand : subCommands.values()) {
+                String name = subCommand.getName();
+                if (subCommand.hasRequiredPermission(sender) && name.startsWith(prefix)) {
+                    completions.add(name);
+                }
+            }
+
+            return completions;
+        }
+
+        SubCommand subCommand = subCommands.get(args[0].toLowerCase());
+        if (subCommand == null || !subCommand.hasRequiredPermission(sender)) {
+            return List.of();
+        }
+
+        String[] subArgs = new String[args.length - 1];
+        System.arraycopy(args, 1, subArgs, 0, subArgs.length);
+        return subCommand.tabComplete(sender, command, alias, subArgs);
     }
 }

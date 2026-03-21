@@ -10,6 +10,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jspecify.annotations.NonNull;
 
+import java.util.List;
+
 public class InfoSubCommand implements SubCommand {
 
     public static String name = "info";
@@ -47,6 +49,19 @@ public class InfoSubCommand implements SubCommand {
     public boolean hasRequiredPermission(@NonNull CommandSender sender) {
         return sender.hasPermission(Permissions.INFO_COMMAND_PERMISSION)
             || sender.hasPermission(Permissions.INFO_OTHER_COMMAND_PERMISSION);
+    }
+
+    @Override
+    public @NonNull List<String> tabComplete(@NonNull CommandSender sender, Command command, String label, String[] args) {
+        if (!hasInfoOtherPermission(sender) || args.length != 1) {
+            return List.of();
+        }
+
+        String prefix = args[0].toLowerCase();
+        return Main.getInstance().getServer().getOnlinePlayers().stream()
+            .map(Player::getName)
+            .filter(name -> name.toLowerCase().startsWith(prefix))
+            .toList();
     }
 
     private boolean hasInfoOtherPermission(CommandSender sender) {

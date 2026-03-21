@@ -4,6 +4,9 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.jspecify.annotations.NonNull;
 
+import java.util.Collections;
+import java.util.List;
+
 /**
  * Represents a subcommand for the plugin's command system.
  * Implementations must provide a non-empty command name or code via getName().
@@ -35,4 +38,13 @@ public interface SubCommand {
      * @return true if the sender has the required permissions, false otherwise
      */
     boolean hasRequiredPermission(@NonNull CommandSender sender);
+
+    /**
+     * Returns tab-completion suggestions for this subcommand.
+     *
+     * @return completion entries, or an empty list if none are available
+     */
+    default @NonNull List<String> tabComplete(@NonNull CommandSender sender, Command command, String label, String[] args) {
+        return Collections.emptyList();
+    }
 }
