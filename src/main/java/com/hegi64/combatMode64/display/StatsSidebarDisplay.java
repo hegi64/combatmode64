@@ -48,7 +48,7 @@ public final class StatsSidebarDisplay {
     );
 
     private static final DateTimeFormatter TIME_FORMAT = DateTimeFormatter.ofPattern("HH:mm:ss");
-    private static final String LINE_SEPARATOR = ChatColor.DARK_GRAY + "────────";
+    private static final String LINE_SEPARATOR = ChatColor.DARK_GRAY + " ";
 
     private final Main plugin;
     private final StatsService statsService;
