@@ -22,6 +22,11 @@ permissions:
       combatmode64.combatmode.other.change: false
       combatmode64.combatmode.info: true
       combatmode64.combatmode.other.info: false
+      combatmode64.combatmode.stats: true
+      combatmode64.combatmode.other.stats: false
+      combatmode64.combatmode.vs: false
+      combatmode64.combatmode.lastkill: true
+      combatmode64.combatmode.other.lastkill: false
 
   combatmode64.combatmode.reload:
     description: Allows reloading the CombatMode64 config
@@ -41,4 +46,24 @@ permissions:
 
   combatmode64.combatmode.other.info:
     description: Allows viewing another player's combat mode status
+    default: op
+
+  combatmode64.combatmode.stats:
+    description: Allows viewing your own combat stats
+    default: true
+
+  combatmode64.combatmode.other.stats:
+    description: Allows viewing another player's combat stats
+    default: op
+
+  combatmode64.combatmode.vs:
+    description: Allows viewing killer-victim pair stats
+    default: op
+
+  combatmode64.combatmode.lastkill:
+    description: Allows viewing your own latest death kill details
+    default: true
+
+  combatmode64.combatmode.other.lastkill:
+    description: Allows viewing another player's latest death kill details
     default: op

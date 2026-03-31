@@ -1,4 +1,4 @@
-configVersion: 1.1.0
+configVersion: 1.2.0
 
 # The worlds in which combat mode is allowed and available.
 # If a player is in a world that is not listed here, they will not be able to enter combat mode.
@@ -37,3 +37,10 @@ combat_status_indicator:
     show: false
     # Text shown after the player name (supports & color codes)
     text: " &a☮"
+
+# SQLite-backed combat stats
+stats:
+  enabled: true
+  sqlite:
+    # File is created inside the plugin data folder
+    file: "stats.db"

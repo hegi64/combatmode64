@@ -8,6 +8,7 @@ import java.util.List;
 public final class ConfigUtil {
 
     private static final String INDICATOR_ROOT = "combat_status_indicator";
+    private static final String STATS_ROOT = "stats";
 
     public static List<String> getAllowedWorlds() {
         return Main.getInstance().getConfig().getStringList("allowed_worlds");
@@ -45,5 +46,13 @@ public final class ConfigUtil {
     public static String getNotInCombatText() {
         String text = Main.getInstance().getConfig().getString(INDICATOR_ROOT + ".not_in_combat.text", " &a☮ Peaceful");
         return ChatColor.translateAlternateColorCodes('&', text);
+    }
+
+    public static boolean isStatsEnabled() {
+        return Main.getInstance().getConfig().getBoolean(STATS_ROOT + ".enabled", true);
+    }
+
+    public static String getStatsSqliteFileName() {
+        return Main.getInstance().getConfig().getString(STATS_ROOT + ".sqlite.file", "stats.db");
     }
 }
