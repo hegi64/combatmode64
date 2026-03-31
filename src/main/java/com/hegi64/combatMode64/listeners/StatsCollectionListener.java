@@ -1,5 +1,6 @@
 package com.hegi64.combatMode64.listeners;
 
+import com.hegi64.combatMode64.display.StatsSidebarDisplay;
 import com.hegi64.combatMode64.stats.StatsService;
 import com.hegi64.combatMode64.utils.CombatModeUtil;
 import org.bukkit.Location;
@@ -12,9 +13,11 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 public class StatsCollectionListener implements Listener {
 
     private final StatsService statsService;
+    private final StatsSidebarDisplay statsSidebarDisplay;
 
-    public StatsCollectionListener(StatsService statsService) {
+    public StatsCollectionListener(StatsService statsService, StatsSidebarDisplay statsSidebarDisplay) {
         this.statsService = statsService;
+        this.statsSidebarDisplay = statsSidebarDisplay;
     }
 
     @EventHandler
@@ -58,5 +61,9 @@ public class StatsCollectionListener implements Listener {
             deathLocation.getZ(),
             distance
         );
+
+        if (statsSidebarDisplay != null) {
+            statsSidebarDisplay.refreshAfterKill(killer, victim);
+        }
     }
 }

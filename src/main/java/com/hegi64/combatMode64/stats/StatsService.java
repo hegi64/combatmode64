@@ -255,6 +255,52 @@ public final class StatsService {
         }
     }
 
+    public Optional<KillEventDetails> getLastKillByKiller(UUID killerUuid) {
+        if (!active || killerUuid == null) {
+            return Optional.empty();
+        }
+
+        String sql = """
+            SELECT killer_name, victim_name, world_name, death_cause, weapon_type,
+                   killer_x, killer_y, killer_z,
+                   victim_x, victim_y, victim_z,
+                   distance, killed_at
+            FROM kill_events
+            WHERE killer_uuid = ?
+            ORDER BY killed_at DESC, id DESC
+            LIMIT 1
+            """;
+
+        try (Connection connection = openConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, killerUuid.toString());
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (!resultSet.next()) {
+                    return Optional.empty();
+                }
+
+                return Optional.of(new KillEventDetails(
+                    resultSet.getString("killer_name"),
+                    resultSet.getString("victim_name"),
+                    resultSet.getString("world_name"),
+                    resultSet.getString("death_cause"),
+                    resultSet.getString("weapon_type"),
+                    resultSet.getDouble("killer_x"),
+                    resultSet.getDouble("killer_y"),
+                    resultSet.getDouble("killer_z"),
+                    resultSet.getDouble("victim_x"),
+                    resultSet.getDouble("victim_y"),
+                    resultSet.getDouble("victim_z"),
+                    resultSet.getDouble("distance"),
+                    resultSet.getLong("killed_at")
+                ));
+            }
+        } catch (SQLException e) {
+            plugin.getLogger().warning("Failed to load last kill by killer: " + e.getMessage());
+            return Optional.empty();
+        }
+    }
+
     private Connection openConnection() throws SQLException {
         Connection connection = DriverManager.getConnection(jdbcUrl);
         try (Statement statement = connection.createStatement()) {
@@ -418,4 +464,3 @@ public final class StatsService {
         }
     }
 }
-

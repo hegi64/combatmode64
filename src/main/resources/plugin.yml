@@ -27,6 +27,9 @@ permissions:
       combatmode64.combatmode.vs: false
       combatmode64.combatmode.lastkill: true
       combatmode64.combatmode.other.lastkill: false
+      combatmode64.combatmode.statsboard: true
+      combatmode64.combatmode.other.statsboard: false
+      combatmode64.combatmode.statsboard.refresh: false
 
   combatmode64.combatmode.reload:
     description: Allows reloading the CombatMode64 config
@@ -66,4 +69,16 @@ permissions:
 
   combatmode64.combatmode.other.lastkill:
     description: Allows viewing another player's latest death kill details
+    default: op
+
+  combatmode64.combatmode.statsboard:
+    description: Allows managing your own stats sidebar scoreboard
+    default: true
+
+  combatmode64.combatmode.other.statsboard:
+    description: Allows managing another player's stats sidebar scoreboard
+    default: op
+
+  combatmode64.combatmode.statsboard.refresh:
+    description: Allows refreshing stats sidebar scoreboards
     default: op

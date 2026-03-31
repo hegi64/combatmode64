@@ -25,4 +25,10 @@ public class Permissions {
     public static final String LASTKILL_COMMAND_PERMISSION = COMMAND_PERMISSION + ".lastkill";
 
     public static final String LASTKILL_OTHER_COMMAND_PERMISSION = COMMAND_PERMISSION + ".other.lastkill";
+
+    public static final String STATSBOARD_COMMAND_PERMISSION = COMMAND_PERMISSION + ".statsboard";
+
+    public static final String STATSBOARD_OTHER_COMMAND_PERMISSION = COMMAND_PERMISSION + ".other.statsboard";
+
+    public static final String STATSBOARD_REFRESH_COMMAND_PERMISSION = COMMAND_PERMISSION + ".statsboard.refresh";
 }
