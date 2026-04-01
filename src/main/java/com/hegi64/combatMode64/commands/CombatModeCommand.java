@@ -21,6 +21,9 @@ public class CombatModeCommand implements TabExecutor {
         subCommands.put(ReloadSubCommand.name, new ReloadSubCommand());
         subCommands.put(ToggleSubCommand.name, new ToggleSubCommand());
         subCommands.put(InfoSubCommand.name, new InfoSubCommand());
+        subCommands.put(StatsSubCommand.name, new StatsSubCommand());
+        subCommands.put(VsSubCommand.name, new VsSubCommand());
+        subCommands.put(StatsboardSubCommand.name, new StatsboardSubCommand());
 
         subCommands.put(HelpSubCommand.name, new HelpSubCommand(subCommands));
     }

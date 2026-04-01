@@ -15,6 +15,20 @@ public class Permissions {
     public static final String INFO_COMMAND_PERMISSION = COMMAND_PERMISSION + ".info";
 
     public static final String INFO_OTHER_COMMAND_PERMISSION = COMMAND_PERMISSION + ".other.info";
+
+    public static final String STATS_COMMAND_PERMISSION = COMMAND_PERMISSION + ".stats";
+
+    public static final String STATS_OTHER_COMMAND_PERMISSION = COMMAND_PERMISSION + ".other.stats";
+
+    public static final String VS_COMMAND_PERMISSION = COMMAND_PERMISSION + ".vs";
+
+    public static final String LASTKILL_COMMAND_PERMISSION = COMMAND_PERMISSION + ".lastkill";
+
+    public static final String LASTKILL_OTHER_COMMAND_PERMISSION = COMMAND_PERMISSION + ".other.lastkill";
+
+    public static final String STATSBOARD_COMMAND_PERMISSION = COMMAND_PERMISSION + ".statsboard";
+
+    public static final String STATSBOARD_OTHER_COMMAND_PERMISSION = COMMAND_PERMISSION + ".other.statsboard";
+
+    public static final String STATSBOARD_REFRESH_COMMAND_PERMISSION = COMMAND_PERMISSION + ".statsboard.refresh";
 }
-
-

@@ -1,4 +1,4 @@
-configVersion: 1.1.0
+configVersion: 1.2.2
 
 # The worlds in which combat mode is allowed and available.
 # If a player is in a world that is not listed here, they will not be able to enter combat mode.
@@ -37,3 +37,37 @@ combat_status_indicator:
     show: false
     # Text shown after the player name (supports & color codes)
     text: " &a☮"
+
+# SQLite-backed combat stats
+stats:
+  enabled: true
+  sqlite:
+    # File is created inside the plugin data folder
+    file: "stats.db"
+
+# Stats sidebar scoreboard (Phase 2 + 3)
+stats_scoreboard:
+  enabled: true
+
+  # Supports: off, compact, extended
+  default_mode: off
+
+  # Legacy fallback for older installs (default_mode takes priority)
+  default_enabled: false
+
+  # Sidebar title (supports & color codes)
+  title: "&cCombat Stats"
+
+  # If false, scoreboard is only shown when player uses the main scoreboard
+  # (prevents overriding sidebars from other plugins)
+  take_over_sidebar: false
+
+  # Periodic refresh interval in seconds (0 disables periodic refresh)
+  update_interval_seconds: 45
+
+  # Extended mode line toggles
+  show_last_victim: true
+  show_weapon: true
+  show_distance: true
+  show_world: false
+  show_kill_time: false
